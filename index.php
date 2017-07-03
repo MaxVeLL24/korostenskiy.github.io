@@ -16,7 +16,7 @@
         body {
             background: url("img/footer_lodyas.png");
             background-size: cover;
-            
+
         }
     </style>
 </head>
