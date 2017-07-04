@@ -32,6 +32,54 @@ require_once 'autoloader.php';
             require_once 'work_background.php';
         } else if (!empty($_POST)) {
             $db = new DB();
+            if (isset($_POST['detailId'])) {
+                if ($_POST['Give']) {
+                    $operation = $db->operation("INSERT INTO `DetailsAccounting`(`detail_id`, `operation`, `count`, `taker`, `giver`, `operation_time`) VALUES ('{$_POST['detailId']}','{$_POST['Give']}','{$_POST['DetailsCount']}','{$_POST['taker']}','{$_POST['giver']}',CURRENT_TIMESTAMP)");
+                    $balanceCheck = $db->find("SELECT `countOnBalance` FROM `DetailsBalance` WHERE `detail_id`='{$_POST['detailId']}'")->fetch_assoc();
+                    $balanceChange = $balanceCheck['countOnBalance'] - $_POST['DetailsCount'];
+                    $balanceUpdate = $db->operation("UPDATE `DetailsBalance` SET `countOnBalance`='$balanceChange',`LastUpdateTime`=CURRENT_TIMESTAMP WHERE `detail_id`='{$_POST['detailId']}'");
+                    if (!$balanceUpdate === false) {
+                        require_once 'operations/operation_success.php';
+                    } else if ($balanceUpdate === false) {
+                        require_once 'operations/operation_error.php';
+                    }
+                }
+                if ($_POST['Take']) {
+                    $operation = $db->operation("INSERT INTO `DetailsAccounting`(`detail_id`, `operation`, `count`, `taker`, `giver`, `operation_time`) VALUES ('{$_POST['detailId']}','{$_POST['Take']}','{$_POST['DetailsCount']}','{$_POST['taker']}','{$_POST['giver']}',CURRENT_TIMESTAMP)");
+                    $balanceCheck = $db->find("SELECT `countOnBalance` FROM `DetailsBalance` WHERE `detail_id`='{$_POST['detailId']}'")->fetch_assoc();
+                    $balanceChange = $balanceCheck['countOnBalance'] + $_POST['DetailsCount'];
+                    $balanceUpdate = $db->operation("UPDATE `DetailsBalance` SET `countOnBalance`='$balanceChange',`LastUpdateTime`=CURRENT_TIMESTAMP WHERE `detail_id`='{$_POST['detailId']}'");
+                    if (!$balanceUpdate === false) {
+                        require_once 'operations/operation_success.php';
+                    } else if ($balanceUpdate === false) {
+                        require_once 'operations/operation_error.php';
+                    }
+                }
+            }
+            if (isset($_POST['pmmId'])) {
+                if ($_POST['Give']) {
+                    $operation = $db->operation("INSERT INTO `pmmAccounting`(`pmm_id`, `operation`, `count`, `taker`, `giver`, `operationTime`) VALUES ('{$_POST['pmmId']}','{$_POST['Give']}','{$_POST['pmmCount']}','{$_POST['taker']}','{$_POST['giver']}',CURRENT_TIMESTAMP)");
+                    $balanceCheck = $db->find("SELECT `countOnBalance` FROM `pmmBalance` WHERE `pmm_id`='{$_POST['pmmId']}'")->fetch_assoc();
+                    $balanceChange = $balanceCheck['countOnBalance'] - $_POST['pmmCount'];
+                    $balanceUpdate = $db->operation("UPDATE `pmmBalance` SET `countOnBalance`='$balanceChange',`LastUpdateTime`=CURRENT_TIMESTAMP WHERE `pmm_id`='{$_POST['pmmId']}'");
+                    if (!$balanceUpdate === false) {
+                        require_once 'operations/operation_success.php';
+                    } else if ($balanceUpdate === false) {
+                        require_once 'operations/operation_error.php';
+                    }
+                }
+                if ($_POST['Take']) {
+                    $operation = $db->operation("INSERT INTO `pmmAccounting`(`pmm_id`, `operation`, `count`, `taker`, `giver`, `operationTime`) VALUES ('{$_POST['pmmId']}','{$_POST['Take']}','{$_POST['pmmCount']}','{$_POST['taker']}','{$_POST['giver']}',CURRENT_TIMESTAMP)");
+                    $balanceCheck = $db->find("SELECT `countOnBalance` FROM `pmmBalance` WHERE `pmm_id`='{$_POST['pmmId']}'")->fetch_assoc();
+                    $balanceChange = $balanceCheck['countOnBalance'] + $_POST['pmmCount'];
+                    $balanceUpdate = $db->operation("UPDATE `pmmBalance` SET `countOnBalance`='$balanceChange',`LastUpdateTime`=CURRENT_TIMESTAMP WHERE `pmm_id`='{$_POST['pmmId']}'");
+                    if (!$balanceUpdate === false) {
+                        require_once 'operations/operation_success.php';
+                    } else if ($balanceUpdate === false) {
+                        require_once 'operations/operation_error.php';
+                    }
+                }
+            }
             if (isset($_POST['detailsLogin']) && isset($_POST['detailsPassword'])) {
                 $result = $db->login("SELECT * FROM `users` WHERE `login`='{$_POST['detailsLogin']}' AND `password`='{$_POST['detailsPassword']}'")->fetch_assoc();
                 if ($result['access'] == 'all' or $result['access'] == 'details') {
@@ -42,7 +90,7 @@ require_once 'autoloader.php';
             } else if (isset($_POST['pmmLogin']) && isset($_POST['pmmPassword'])) {
                 $result = $db->login("SELECT * FROM `users` WHERE `login`='{$_POST['pmmLogin']}' AND `password`='{$_POST['pmmPassword']}'")->fetch_assoc();
                 if ($result['access'] == 'all' or $result['access'] == 'pmm') {
-                    echo '<h1 style="color: white;text-align: center">Welcome to PMM</h1>';
+                    require_once 'operations/pmm_operations.php';
                 } else {
                     require_once 'wrong_way.php';
                 }
@@ -63,11 +111,9 @@ require_once 'autoloader.php';
                     require_once 'wrong_way.php';
                 }
             }
-
         } else {
             require_once 'login_error.php';
         }
-
         ?>
         <?php require_once 'footer.php' ?>
     </div>

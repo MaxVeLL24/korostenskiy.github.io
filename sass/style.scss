@@ -207,6 +207,20 @@
           display: none;
           padding-bottom: 25px;
         }
+        div.operation {
+          font-family: 'Jura', sans-serif;
+          form {
+            select#detailsList {
+              background-color: black;
+              option {
+                background-color: black;
+              }
+            }
+            input.oper {
+              width: 50%;
+            }
+          }
+        }
       }
     }
   }
