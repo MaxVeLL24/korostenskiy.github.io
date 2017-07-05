@@ -32,6 +32,7 @@ if (!empty($detailsBalance)) {
     echo '</div>';
 }
 $pmmBalance = $db->find("SELECT * FROM `pmmBalance` ORDER BY `LastUpdateTime` DESC")->fetch_all();
+
 if (!empty($pmmBalance)) {
     echo '<div class="pmmBalance">';
     echo '<table>';
@@ -42,15 +43,53 @@ if (!empty($pmmBalance)) {
   </tr>';
     foreach ($pmmBalance as $pmmBal) {
         echo "<tr>
-    <td>" . $pmmBal[1] . "</td>
+    <td><a type='button' data-toggle='modal' data-target='#pmmAc" . $pmmBal[0] . "'>" . $pmmBal[1] . "</a></td>
     <td>" . $pmmBal[2] . "</td>
     <td>" . $pmmBal[3] . "</td>
   </tr>";
-
     }
     echo '</table>';
+
+    $pmmACC = $db->find("SELECT `pmm_id` FROM `pmmBalance` ORDER BY `LastUpdateTime` DESC")->fetch_all();
+    foreach ($pmmACC as $key) {
+        $pmmAccounting = $db->find("SELECT * FROM `pmmAccounting` WHERE `pmm_id`='$key[0]' ORDER BY `operationTime` DESC")->fetch_all();
+        if (!empty($pmmAccounting)) {
+            foreach ($pmmAccounting as $value) {
+                echo "<div class='modal fade' id='pmmAc" . $key[0] . "' role='dialog'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                <h4 class='modal-title'>Проведені операції:</h4>
+            </div>
+            <div class='modal-body'>
+                <table class='modal-table'>
+                    <tr>
+                        <th>Операція</th>
+                        <th>Кількість</th>
+                        <th>Отримувач</th>
+                        <th>Видав</th>
+                        <th>Дата</th>
+                    </tr>
+                    <tr>
+                        <td>" . $value[2] . "</td>
+                        <td>" . $value[3] . "</td>
+                        <td>" . $value[4] . "</td>
+                        <td>" . $value[5] . "</td>
+                        <td>" . $value[6] . "</td>
+                    </tr>
+                    </table>
+            </div>
+        </div>
+    </div></div>";
+            }
+        }
+    }
     echo '</div>';
+
 }
+
+
 $fuelBalance = $db->find("SELECT * FROM `fuelBalance` ORDER BY `LastUpdateTime` DESC")->fetch_all();
 if (!empty($fuelBalance)) {
     echo '<div class="fuelBalance">';

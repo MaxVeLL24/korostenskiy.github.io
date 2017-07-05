@@ -55,6 +55,10 @@
           background: url("../img/footer_lodyas.png");
           //background: linear-gradient(30deg, rgb(215, 171, 110) 15%, rgb(202, 159, 101) 40%, rgb(225, 150, 79), rgb(200, 174, 93) 100%);
           .modal-header {
+            button.close {
+              color: white;
+              opacity: 0.9;
+            }
             h4.modal-title {
               color: white;
               text-align: center;
@@ -155,11 +159,18 @@
 
             td {
               border: 1px solid white;
+              a {
+                color: white;
+              }
             }
           }
           tr:hover {
             background-color: rgba(19, 220, 82, 0.5);
           }
+        }
+        table.modal-table {
+          margin: 0;
+          width: 100%;
         }
         div.balance-menu, div.operation {
           margin-top: 15px;
@@ -205,7 +216,7 @@
         }
         div.DetailBalance, div.pmmBalance, div.fuelBalance {
           display: none;
-          padding-bottom: 25px;
+          padding-bottom: 30px;
         }
         div.operation {
           font-family: 'Jura', sans-serif;
@@ -216,8 +227,16 @@
                 background-color: black;
               }
             }
-            input.oper {
-              width: 50%;
+            ul {
+              li {
+                width: 60%;
+                a {
+
+                }
+                a:hover {
+                  background-color: rgba(220, 23, 23, 0.5);
+                }
+              }
             }
           }
         }
