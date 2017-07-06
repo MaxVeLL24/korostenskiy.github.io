@@ -223,6 +223,9 @@
               }
             }
           }
+          form select.form-control option {
+            color: black;
+          }
         }
         div.DetailBalance, div.pmmBalance, div.fuelBalance {
           display: none;

@@ -14,8 +14,7 @@
         </select><br>
         <input class="form-control oper" type="number" name="DetailsCount" placeholder="Кількість" required>
         <input class="form-control oper" type="text" name="taker" placeholder="Хто бере" required>
-        <input class="form-control oper" type="text" name="giver" placeholder="Хто видає" required
-               value="<?= $_POST['detailsLogin'] ?>">
+        <input class="form-control oper" type="text" name="giver" placeholder="Хто видає" required>
         <br>
         <ul>
             <li><a type="button" data-toggle="modal" data-target="#DetailsPlus">Видача</a></li>

@@ -24,5 +24,5 @@ $(document).ready(function () {
         $("div.pmmBalance").css('display', 'none');
         $("div.fuelBalance").slideToggle('slow');
         $(this).addClass('active');
-    })
+    });
 });

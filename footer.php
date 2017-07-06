@@ -5,7 +5,7 @@
                 <b>Сьогодні:</b> <?php
                 echo date("F j, Y, G:i:s ");
                 ?>
-                <br>Beta v. 0.1.1</span>
+                <br>Beta v. 0.2</span>
         </div>
         <div class="col-md-9">
             <span class="text"> Designed and Developed by M.Pawlenko</span>

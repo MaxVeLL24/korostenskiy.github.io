@@ -14,8 +14,7 @@
         </select><br>
         <input class="form-control oper" type="number" name="pmmCount" placeholder="Кількість" required>
         <input class="form-control oper" type="text" name="taker" placeholder="Хто бере" required>
-        <input class="form-control oper" type="text" name="giver" placeholder="Хто видає" required
-               value="<?= $_POST['pmmLogin'] ?>">
+        <input class="form-control oper" type="text" name="giver" placeholder="Хто видає" required>
         <br>
         <ul>
             <li><a type="button" data-toggle="modal" data-target="#pmmPlus">Видача</a></li>

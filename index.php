@@ -12,16 +12,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style2.css">
     <style>
         body {
             background: url("img/footer_lodyas.png");
             background-size: cover;
-
         }
+
     </style>
 </head>
-<body>
-<div class="main col-md-12">
+<body onload="myFunction()">
+<div id="loader"></div>
+<div id="page" class="main col-md-12" style="display: none">
     <div class="sub-main">
         <?php
         require_once 'header.php';
@@ -35,6 +37,17 @@
     </div>
 </div>
 
+<script>
+    var myVar;
+    function myFunction() {
+        myVar = setTimeout(showPage, 1000);
+    }
+    function showPage() {
+        $("#loader").css('display', 'none');
+        $("#page").css('display', 'block');
+    }
+</script>
 <script src="js/script.js"></script>
+
 </body>
 </html>
