@@ -23,7 +23,7 @@
 </head>
 <body onload="myFunction()">
 <div id="loader"></div>
-<div id="page" class="main col-md-12" style="display: none">
+<div id="page" class="main col-md-12">
     <div class="sub-main">
         <?php
         require_once 'header.php';
@@ -40,6 +40,7 @@
 <script>
     var myVar;
     function myFunction() {
+        $("#page").css('display', 'none');
         myVar = setTimeout(showPage, 1000);
     }
     function showPage() {
