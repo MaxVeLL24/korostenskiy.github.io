@@ -30,3 +30,6 @@ body div#loader {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
+
+body form select.form-control option {
+  color: black; }

@@ -24,4 +24,11 @@ body {
       transform: rotate(360deg);
     }
   }
+  form {
+    select.form-control {
+      option {
+        color: black;
+      }
+    }
+  }
 }
