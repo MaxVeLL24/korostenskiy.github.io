@@ -50,7 +50,14 @@ if (!empty($detailsBalance)) {
                         <th>Видав</th>
                         <th>Дата</th>
                     </tr>";
+            $debitDetails;
+            $kreditDetails;
             foreach ($detailACCounting as $value) {
+                if ($value[2] == 'Отримання') {
+                    $debitDetails += $value[3];
+                } elseif ($value[2] == 'Видача') {
+                    $kreditDetails += $value[3];
+                }
                 echo "<tr>
                         <td> " . $value[2] . "</td>
                         <td> " . $value[3] . "</td>
@@ -59,6 +66,14 @@ if (!empty($detailsBalance)) {
                         <td> " . $value[6] . "</td>
                     </tr>";
             }
+            $resultD = $debitDetails - $kreditDetails;
+            echo "<tr>
+                        <td>Сума</td>
+                        <td>" . $resultD . "</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>";
             echo "</table>
             </div>
         </div>
@@ -106,9 +121,14 @@ if (!empty($pmmBalance)) {
                         <th> Видав</th>
                         <th> Дата</th>
                     </tr> ";
+            $debit;
+            $kredit;
             foreach ($pmmAccounting as $value) {
-                $debit;
-                $kredit;
+                if ($value[2] == 'Отримання') {
+                    $debit += $value[3];
+                } elseif ($value[2] == 'Видача') {
+                    $kredit += $value[3];
+                }
                 echo "
                     <tr>
                         <td> " . $value[2] . "</td>
@@ -116,8 +136,16 @@ if (!empty($pmmBalance)) {
                         <td> " . $value[4] . "</td>
                         <td> " . $value[5] . "</td>
                         <td> " . $value[6] . "</td>
-                    </tr> ";
+                    </tr>";
             }
+            $result = $debit - $kredit;
+            echo "<tr>
+                        <td>Сума</td>
+                        <td>" . $result . "</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>";
             echo "
                     </table>
             </div>
