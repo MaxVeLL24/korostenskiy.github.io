@@ -6,7 +6,6 @@ $(document).ready(function () {
     $("a.Detailstart").click(function () {
         $("div.balance-menu ul li a").removeClass('active');
         $("div.pmmBalance").css('display', 'none');
-        $("div.fuelBalance").css('display', 'none');
         $("div.DetailBalance").slideToggle('slow');
         $(this).addClass('active');
 
@@ -14,15 +13,8 @@ $(document).ready(function () {
     $("a.ppmstart").click(function () {
         $("div.balance-menu ul li a").removeClass('active');
         $("div.DetailBalance").css('display', 'none');
-        $("div.fuelBalance").css('display', 'none');
         $("div.pmmBalance").slideToggle('slow');
         $(this).addClass('active');
     });
-    $("a.fuelstart").click(function () {
-        $("div.balance-menu ul li a").removeClass('active');
-        $("div.DetailBalance").css('display', 'none');
-        $("div.pmmBalance").css('display', 'none');
-        $("div.fuelBalance").slideToggle('slow');
-        $(this).addClass('active');
-    });
+
 });

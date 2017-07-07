@@ -3,7 +3,10 @@
   body {
     margin: 0 auto;
     div.main {
-      @media screen and (max-width: 480px) {
+      @media screen and (max-width: 677px) {
+        padding: 0;
+      }
+      @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) {
         padding: 0;
       }
       div.sub-main {
@@ -12,7 +15,11 @@
         width: 85%;
         box-shadow: 0px 0px 13px -1px rgba(3, 3, 3, 1);
         max-width: 1368px;
-        @media screen and (max-width: 480px) {
+        @media screen and (max-width: 667px) {
+          width: 100%;
+          margin: 0;
+        }
+        @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) {
           width: 100%;
           margin: 0;
         }
@@ -51,32 +58,38 @@
           ul.slide-element {
           }
         }
-        div.modal-content {
-          @media screen and (max-width: 450px) {
-            font-size: 0.8em;
+        div.modal-dialog {
+          @media only screen and (max-device-width: 667px) {
+            width: 90%;
           }
-          @media screen and (max-width: 375px) {
-            font-size: 0.6em;
-          }
-          @media screen and (max-width: 375px) {
-            font-size: 0.5em;
-          }
-          top: 150px;
-          background: url("../img/footer_lodyas.png");
-          //background: linear-gradient(30deg, rgb(215, 171, 110) 15%, rgb(202, 159, 101) 40%, rgb(225, 150, 79), rgb(200, 174, 93) 100%);
-          .modal-header {
-            button.close {
-              color: white;
-              opacity: 0.9;
+          div.modal-content {
+            @media screen and (max-width: 450px) {
+              font-size: 0.8em;
+            }
+            @media screen and (max-width: 375px) {
+              font-size: 0.6em;
+            }
+            @media screen and (max-width: 375px) {
+              font-size: 0.5em;
+            }
 
+            top: 150px;
+            background: url("../img/footer_lodyas.png");
+            //background: linear-gradient(30deg, rgb(215, 171, 110) 15%, rgb(202, 159, 101) 40%, rgb(225, 150, 79), rgb(200, 174, 93) 100%);
+            .modal-header {
+              button.close {
+                color: white;
+                opacity: 0.9;
+
+              }
+              h4.modal-title {
+                color: white;
+                text-align: center;
+              }
             }
-            h4.modal-title {
-              color: white;
-              text-align: center;
+            input::placeholder {
+              color: black;
             }
-          }
-          input::placeholder {
-            color: black;
           }
         }
         .logo {

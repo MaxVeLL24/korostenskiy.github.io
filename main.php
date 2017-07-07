@@ -27,7 +27,7 @@ require_once 'autoloader.php';
     <div class="sub-main">
         <?php require_once 'header.php' ?>
         <?php
-
+        date_default_timezone_set('Europe/Kiev');
         if (!$_POST) {
             require_once 'work_background.php';
         } else if (!empty($_POST)) {
@@ -95,15 +95,7 @@ require_once 'autoloader.php';
                     require_once 'wrong_way.php';
                 }
 
-            } else if (isset($_POST['fuelLogin']) && isset($_POST['fuelPassword'])) {
-                $result = $db->login("SELECT * FROM `users` WHERE `login`='{$_POST['fuelLogin']}' AND `password`='{$_POST['fuelPassword']}'")->fetch_assoc();
-                if ($result['access'] == 'all' or $result['access'] == 'fuel') {
-                    echo '<h1 style="color: white;text-align: center">Welcome to fuel</h1>';
-                } else {
-                    require_once 'wrong_way.php';
-                }
-
-            } else if (isset($_POST['balanceLogin']) && isset($_POST['balancePassword'])) {
+            }  else if (isset($_POST['balanceLogin']) && isset($_POST['balancePassword'])) {
                 $result = $db->login("SELECT * FROM `users` WHERE `login`='{$_POST['balanceLogin']}' AND `password`='{$_POST['balancePassword']}'")->fetch_assoc();
                 if ($result['access'] == 'all') {
                     require_once 'operations/balance.php';

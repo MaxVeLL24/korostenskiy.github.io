@@ -5,11 +5,11 @@
         <br>
         <li><a class="Detailstart">Деталі</a></li>
         <li><a class="ppmstart">ПММ</a></li>
-        <li><a class="fuelstart">Паливо</a></li>
     </ul>
 </div>
 
 <?php
+date_default_timezone_set('Europe/Kiev');
 $db = new DB();
 $detailsBalance = $db->find("SELECT * FROM `DetailsBalance` ORDER BY `LastUpdateTime` DESC")->fetch_all();
 if (!empty($detailsBalance)) {
@@ -127,26 +127,4 @@ if (!empty($pmmBalance)) {
     }
     echo '</div>';
 
-}
-
-
-$fuelBalance = $db->find("SELECT * FROM `fuelBalance` ORDER BY `LastUpdateTime` DESC")->fetch_all();
-if (!empty($fuelBalance)) {
-    echo '<div class="fuelBalance">';
-    echo '<table>';
-    echo '<tr>
-    <th>-</th>
-    <th>Залишок</th>
-    <th>Остання дата зміни</th>
-  </tr>';
-    foreach ($fuelBalance as $fuelBal) {
-        echo " <tr>
-    <td> " . $fuelBal[1] . "</td>
-    <td> " . $fuelBal[2] . "</td>
-    <td> " . $fuelBal[3] . "</td>
-  </tr> ";
-
-    }
-    echo '</table>';
-    echo '</div>';
 }
