@@ -65,8 +65,6 @@ if (!empty($detailsBalance)) {
     </div></div> ";
         }
     }
-
-
     echo '</div>';
 }
 $pmmBalance = $db->find("SELECT * FROM `pmmBalance` ORDER BY `LastUpdateTime` DESC")->fetch_all();
@@ -81,7 +79,7 @@ if (!empty($pmmBalance)) {
   </tr>';
     foreach ($pmmBalance as $pmmBal) {
         echo " <tr>
-    <td><a type = 'button' data-toggle= 'modal' data-target = '#pmmAc" . $pmmBal[0] . "'> " . $pmmBal[1] . "</a></td>
+    <td><a type = 'button' data-toggle = 'modal' data-target = '#pmmAc" . $pmmBal[0] . "'> " . $pmmBal[1] . "</a></td>
     <td> " . $pmmBal[2] . "</td>
     <td> " . $pmmBal[3] . "</td>
   </tr> ";
@@ -109,6 +107,8 @@ if (!empty($pmmBalance)) {
                         <th> Дата</th>
                     </tr> ";
             foreach ($pmmAccounting as $value) {
+                $debit;
+                $kredit;
                 echo "
                     <tr>
                         <td> " . $value[2] . "</td>
