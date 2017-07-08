@@ -3,6 +3,8 @@
   body {
     margin: 0 auto;
     div.main {
+      padding-left: 7px;
+      padding-right: 7px;
       @media screen and (max-width: 677px) {
         padding: 0;
       }

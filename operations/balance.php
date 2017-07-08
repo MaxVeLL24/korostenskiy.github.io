@@ -68,9 +68,6 @@ if (!empty($detailsBalance)) {
             }
             $resultD = 0;
             $resultD = $debitDetails - $kreditDetails;
-            var_dump($resultD);
-            var_dump($debitDetails);
-            var_dump($kreditDetails);
             echo "<tr>
                         <td>Сума</td>
                         <td>" . $resultD . "</td>
