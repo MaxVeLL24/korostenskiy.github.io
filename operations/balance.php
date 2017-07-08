@@ -50,8 +50,8 @@ if (!empty($detailsBalance)) {
                         <th>Видав</th>
                         <th>Дата</th>
                     </tr>";
-            $debitDetails;
-            $kreditDetails;
+            $kreditDetails = 0;
+            $debitDetails = 0;
             foreach ($detailACCounting as $value) {
                 if ($value[2] == 'Отримання') {
                     $debitDetails += $value[3];
@@ -66,7 +66,11 @@ if (!empty($detailsBalance)) {
                         <td> " . $value[6] . "</td>
                     </tr>";
             }
+            $resultD = 0;
             $resultD = $debitDetails - $kreditDetails;
+            var_dump($resultD);
+            var_dump($debitDetails);
+            var_dump($kreditDetails);
             echo "<tr>
                         <td>Сума</td>
                         <td>" . $resultD . "</td>
@@ -121,8 +125,8 @@ if (!empty($pmmBalance)) {
                         <th> Видав</th>
                         <th> Дата</th>
                     </tr> ";
-            $debit;
-            $kredit;
+            $debit=0;
+            $kredit=0;
             foreach ($pmmAccounting as $value) {
                 if ($value[2] == 'Отримання') {
                     $debit += $value[3];
@@ -138,6 +142,7 @@ if (!empty($pmmBalance)) {
                         <td> " . $value[6] . "</td>
                     </tr>";
             }
+            $result=0;
             $result = $debit - $kredit;
             echo "<tr>
                         <td>Сума</td>
