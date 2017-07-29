@@ -2,7 +2,7 @@
 
 class DB
 {
-    public $link;
+    protected $link;
     const DB_HOST = 'localhost';
     const DB_USER = 'root';
     const DB_PASSWORD = '';
@@ -26,6 +26,11 @@ class DB
     public function operation($sql)
     {
         return $query = $this->link->query($sql);
+    }
+
+    public function __destruct()
+    {
+        mysqli_close($this->link);
     }
 }
 

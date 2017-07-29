@@ -1,4 +1,4 @@
-<a href="index.php">
+<a href="dhub.php">
     <div class="background">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
