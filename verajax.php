@@ -49,3 +49,79 @@ if (!empty($_POST['login']) and !empty($_POST['password'])) {
     }
     return false;
 }
+if (!empty($_POST['detID'])) {
+    $detailInit = verification::DETPROD($_POST['detID']);
+    if (!empty($detailInit)) {
+        $kreditDetails = 0;
+        $debitDetails = 0;
+        echo "<tr>
+                        <th>Операція</th>
+                        <th>Кількість</th>
+                        <th>Отримувач</th>
+                        <th>Видав</th>
+                        <th>Дата</th>
+                    </tr>";
+        foreach ($detailInit as $value) {
+            if ($value[2] == 'Отримання') {
+                $debitDetails += $value[3];
+            } elseif ($value[2] == 'Видача') {
+                $kreditDetails += $value[3];
+            }
+            echo "
+                    <tr>
+                        <td> " . $value[2] . "</td>
+                        <td> " . $value[3] . "</td>
+                        <td> " . $value[4] . "</td>
+                        <td> " . $value[5] . "</td>
+                        <td> " . $value[6] . "</td>
+                    </tr>";
+        }
+        $resultD = 0;
+        $resultD = $debitDetails - $kreditDetails;
+        echo "<tr>
+                        <td>Сума</td>
+                        <td>" . $resultD . "</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>";
+    }
+}
+if (!empty($_POST['pmmID'])) {
+    $detailInit = verification::PMMPROD($_POST['pmmID']);
+    if (!empty($detailInit)) {
+        $kreditDetails = 0;
+        $debitDetails = 0;
+        echo "<tr>
+                        <th>Операція</th>
+                        <th>Кількість</th>
+                        <th>Отримувач</th>
+                        <th>Видав</th>
+                        <th>Дата</th>
+                    </tr>";
+        foreach ($detailInit as $value) {
+            if ($value[2] == 'Отримання') {
+                $debitDetails += $value[3];
+            } elseif ($value[2] == 'Видача') {
+                $kreditDetails += $value[3];
+            }
+            echo "
+                    <tr>
+                        <td> " . $value[2] . "</td>
+                        <td> " . $value[3] . "</td>
+                        <td> " . $value[4] . "</td>
+                        <td> " . $value[5] . "</td>
+                        <td> " . $value[6] . "</td>
+                    </tr>";
+        }
+        $resultD = 0;
+        $resultD = $debitDetails - $kreditDetails;
+        echo "<tr>
+                        <td>Сума</td>
+                        <td>" . $resultD . "</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>";
+    }
+}

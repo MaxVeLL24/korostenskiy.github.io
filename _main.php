@@ -132,5 +132,6 @@ require_once 'autoloader.php';
 
 
 <script src="js/script.js"></script>
+<script src="js/ajax_balance.js"></script>
 </body>
 </html>

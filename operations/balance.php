@@ -7,6 +7,25 @@
         <li><a class="ppmstart">ПММ</a></li>
     </ul>
 </div>
+<div class='modal fade' id='detailACC' role='dialog'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                <h4 class='modal-title'>Проведені операції:</h4>
+            </div>
+            <div class='modal-body'>
+                <ul class="check">
+                    <li class="month-check"><a>За місяць</a></li>
+                    <li class="week-check"><a>За тиждень</a></li>
+                    <li class="day-check"><a>За день</a></li>
+                </ul>
+                <table class='modal-table' id="ajax-input">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php
 date_default_timezone_set('Europe/Kiev');
@@ -14,6 +33,7 @@ $db = new DB();
 $detailsBalance = $db->find("SELECT * FROM `DetailsBalance` ORDER BY `LastUpdateTime` DESC")->fetch_all();
 if (!empty($detailsBalance)) {
     echo '<div class="DetailBalance">';
+    echo '<form method="post" action="">';
     echo '<table>';
     echo '<tr>
     <th>Назва деталі</th>
@@ -22,65 +42,15 @@ if (!empty($detailsBalance)) {
   </tr>';
     foreach ($detailsBalance as $detBalcnce) {
         echo "<tr>
-    <td><a type='button' data-toggle='modal' data-target='#detailACC" . $detBalcnce[0] . "'>" . $detBalcnce[1] . "</a></td>
+    <td><a name='ajax-details' type='button' data-toggle='modal' data-id='" . $detBalcnce[0] . "' data-target='#detailACC'>" . $detBalcnce[1] . "</a></td>
     <td>" . $detBalcnce[2] . "</td>
     <td>" . $detBalcnce[3] . "</td>
   </tr>";
 
     }
     echo '</table>';
+    echo '</form>';
 
-    $detailsACC = $db->find("SELECT `detail_id` FROM `DetailsBalance` ORDER BY `LastUpdateTime` DESC")->fetch_all();
-    foreach ($detailsACC as $key) {
-        $detailACCounting = $db->find("SELECT * FROM `DetailsAccounting` WHERE `detail_id`='$key[0]' ORDER BY `operation_time` DESC")->fetch_all();
-        if (!empty($detailACCounting)) {
-            echo "<div class='modal fade' id='detailACC" . $key[0] . "' role='dialog'>
-    <div class='modal-dialog'>
-        <div class='modal-content'>
-            <div class='modal-header'>
-                <button type='button' class='close' data-dismiss='modal'>&times;</button>
-                <h4 class='modal-title'>Проведені операції:</h4>
-            </div>
-            <div class='modal-body'>
-                <table class='modal-table'>
-                    <tr>
-                        <th>Операція</th>
-                        <th>Кількість</th>
-                        <th>Отримувач</th>
-                        <th>Видав</th>
-                        <th>Дата</th>
-                    </tr>";
-            $kreditDetails = 0;
-            $debitDetails = 0;
-            foreach ($detailACCounting as $value) {
-                if ($value[2] == 'Отримання') {
-                    $debitDetails += $value[3];
-                } elseif ($value[2] == 'Видача') {
-                    $kreditDetails += $value[3];
-                }
-                echo "<tr>
-                        <td> " . $value[2] . "</td>
-                        <td> " . $value[3] . "</td>
-                        <td> " . $value[4] . "</td>
-                        <td> " . $value[5] . "</td>
-                        <td> " . $value[6] . "</td>
-                    </tr>";
-            }
-            $resultD = 0;
-            $resultD = $debitDetails - $kreditDetails;
-            echo "<tr>
-                        <td>Сума</td>
-                        <td>" . $resultD . "</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>";
-            echo "</table>
-            </div>
-        </div>
-    </div></div> ";
-        }
-    }
     echo '</div>';
 }
 $pmmBalance = $db->find("SELECT * FROM `pmmBalance` ORDER BY `LastUpdateTime` DESC")->fetch_all();
@@ -95,66 +65,12 @@ if (!empty($pmmBalance)) {
   </tr>';
     foreach ($pmmBalance as $pmmBal) {
         echo " <tr>
-    <td><a type = 'button' data-toggle = 'modal' data-target = '#pmmAc" . $pmmBal[0] . "'> " . $pmmBal[1] . "</a></td>
+    <td><a name='ajax-pmm' type = 'button' data-toggle = 'modal' data-id='" . $pmmBal[0] . "' data-target = '#detailACC'> " . $pmmBal[1] . "</a></td>
     <td> " . $pmmBal[2] . "</td>
     <td> " . $pmmBal[3] . "</td>
   </tr> ";
     }
     echo '</table>';
-
-    $pmmACC = $db->find("SELECT `pmm_id` FROM `pmmBalance` ORDER BY `LastUpdateTime` DESC")->fetch_all();
-    foreach ($pmmACC as $key) {
-        $pmmAccounting = $db->find("SELECT * FROM `pmmAccounting` WHERE `pmm_id` = '$key[0]' ORDER BY `operationTime` DESC")->fetch_all();
-        if (!empty($pmmAccounting)) {
-            echo " <div class='modal fade' id = 'pmmAc" . $key[0] . "' role = 'dialog'>
-    <div class='modal-dialog'>
-        <div class='modal-content'>
-            <div class='modal-header'>
-                <button type = 'button' class='close' data-dismiss = 'modal'>&times;</button>
-                <h4 class='modal-title'> Проведені операції:</h4>
-            </div>
-            <div class='modal-body'>
-                <table class='modal-table'>
-                    <tr>
-                        <th> Операція</th>
-                        <th> Кількість</th>
-                        <th> Отримувач</th>
-                        <th> Видав</th>
-                        <th> Дата</th>
-                    </tr> ";
-            $debit=0;
-            $kredit=0;
-            foreach ($pmmAccounting as $value) {
-                if ($value[2] == 'Отримання') {
-                    $debit += $value[3];
-                } elseif ($value[2] == 'Видача') {
-                    $kredit += $value[3];
-                }
-                echo "
-                    <tr>
-                        <td> " . $value[2] . "</td>
-                        <td> " . $value[3] . "</td>
-                        <td> " . $value[4] . "</td>
-                        <td> " . $value[5] . "</td>
-                        <td> " . $value[6] . "</td>
-                    </tr>";
-            }
-            $result=0;
-            $result = $debit - $kredit;
-            echo "<tr>
-                        <td>Сума</td>
-                        <td>" . $result . "</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>";
-            echo "
-                    </table>
-            </div>
-        </div>
-    </div></div> ";
-        }
-    }
     echo '</div>';
 
 }
