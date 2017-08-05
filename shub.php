@@ -1,5 +1,6 @@
 <?php
 require_once 'autoloader.php';
+
 ?>
 <!doctype html>
 <html lang="ua">
@@ -53,9 +54,11 @@ require_once 'autoloader.php';
             }
             if ($_COOKIE['ExpT'] == 'rlwy') {
                 echo $headlogo;
+                require_once 'operations/railway.php';
             }
             if ($_COOKIE['ExpT'] == 'trdner') {
                 echo $headlogo;
+                require_once 'operations/local_trade.php';
             }
         } else {
             require_once 'wrong_way.php';

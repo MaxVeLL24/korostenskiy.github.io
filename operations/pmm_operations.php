@@ -1,6 +1,6 @@
 <div class="operation">
     <h3 style="font-family: 'Jura', sans-serif">Виконати операцію:</h3>
-    <form action="../_main.php" method="post"
+    <form action="../_smain.php" method="post"
           style="color: black;font-family: 'Jura', sans-serif;width: 75%;margin: 0 auto">
         <select class="form-control" name="pmmId" required>
             <option value="0" disabled="disabled">Вибирайте з списку:</option>

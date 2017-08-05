@@ -253,7 +253,7 @@
               display: block;
               @media screen and (min-width: 480px) {
                 display: inline-block;
-                width: 30%;
+                width: 24%;
               }
 
               a {
@@ -283,9 +283,12 @@
             input {
               color: black;
             }
+            input.local_trade{
+              margin-bottom: 8px;
+            }
           }
         }
-        div.DetailBalance, div.pmmBalance, div.fuelBalance {
+        div.DetailBalance, div.pmmBalance, div.railwayAccounting, div.local_trade {
           display: none;
           padding-bottom: 30px;
         }

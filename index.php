@@ -74,7 +74,7 @@ require_once 'autoloader.php';
                                 var newres = response.split('/');
                                 var now = new Date();
                                 var time = now.getTime();
-                                time += (15 * 60 * 1000);
+                                time += (25 * 60 * 1000);
                                 now.setTime(time);
                                 document.cookie =
                                     'ExpT=' + newres[1] +

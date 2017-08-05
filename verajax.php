@@ -36,7 +36,7 @@ if (!empty($_POST['login']) and !empty($_POST['password'])) {
             echo $response[1];
             echo $response[2];
         }
-        if ($logres['access'] == 'trade') {
+        if ($logres['access'] == 'local_trade') {
             $response[] = 'shub.php';
             $response[] = '/';
             $response[] = 'trdner';
