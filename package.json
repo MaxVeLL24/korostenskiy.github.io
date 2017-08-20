@@ -1,0 +1,29 @@
+{
+  "name": "localhost",
+  "version": "1.0.0",
+  "description": "kor",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "clean-css": "^4.1.7",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "pump": "^1.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxVeLL24/korostenskiy.github.io.git"
+  },
+  "author": "maxvell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaxVeLL24/korostenskiy.github.io/issues"
+  },
+  "homepage": "https://github.com/MaxVeLL24/korostenskiy.github.io#readme"
+}

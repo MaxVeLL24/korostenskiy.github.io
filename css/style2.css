@@ -1,1 +1,89 @@
-body div#loader{position:absolute;left:50%;top:50%;z-index:1;width:150px;height:150px;margin:-75px 0 0 -75px;border:0px solid rgba(218, 217, 220, 0.5);border-radius:50%;border-top:5px solid rgba(19, 220, 82, 0.5);border-bottom:5px solid rgba(19, 220, 82, 0.5);width:125px;height:125px;-webkit-animation:spin 1s linear infinite;animation:spin 1s linear infinite}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}body form select.form-control option{color:black}body div.login-container{font-family:'Jura', sans-serif;width:420px;margin:0 auto;padding-top:100px;padding-bottom:15px}@media only screen and (max-device-width:480px){body div.login-container{width:320px}}body div.login-container div.logo{color:white;text-align:center;font-size:2em}body div.login-container div.logo div.logo-img{padding-top:10px}body div.login-container div.login-form form{text-align:center}body div.login-container div.login-form form a{text-decoration:none;color:white;font-size:1.3em;display:inline-block;padding:10px 60px;border:1px solid transparent;border-radius:5px;margin:0 auto;background-color:rgba(19, 220, 82, 0.5)}body div.login-container div.login-form form a:hover{-webkit-transform:scale(1.1, 1.1);-ms-transform:scale(1.1, 1.1);transform:scale(1.1, 1.1)}body div.login-container div.login-form form div.input-group{width:90%;margin:0 auto}body div.login-container div.login-form form div.input-group input{margin-bottom:20px;border-radius:5px}body div.login-container div.login-form form div.input-group input.empty{border:1px solid red}body div.login-container div.login-form form div.input-group span{display:inline-block;position:relative;color:white;-webkit-transition:800ms;-o-transition:800ms;transition:800ms}body div.login-container div.login-form form div.input-group span.top-error{bottom:1500px}body div.login-container div.login-form form div.input-group span.right-error{bottom:1500px}body div.login-container div.login-form form div.input-group span.empty{display:block;font-size:1.5em;color:red;bottom:0}
+body div#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 0px solid rgba(218, 217, 220, 0.5);
+  border-radius: 50%;
+  border-top: 5px solid rgba(19, 220, 82, 0.5);
+  border-bottom: 5px solid rgba(19, 220, 82, 0.5);
+  width: 125px;
+  height: 125px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite; }
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+body form select.form-control option {
+  color: black; }
+
+body div.login-container {
+  font-family: 'Jura', sans-serif;
+  width: 420px;
+  margin: 0 auto;
+  padding-top: 100px;
+  padding-bottom: 15px; }
+  @media only screen and (max-device-width: 480px) {
+    body div.login-container {
+      width: 320px; } }
+  body div.login-container div.logo {
+    color: white;
+    text-align: center;
+    font-size: 2em; }
+    body div.login-container div.logo div.logo-img {
+      padding-top: 10px; }
+  body div.login-container div.login-form form {
+    text-align: center; }
+    body div.login-container div.login-form form a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.3em;
+      display: inline-block;
+      padding: 10px 60px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      margin: 0 auto;
+      background-color: rgba(19, 220, 82, 0.5); }
+    body div.login-container div.login-form form a:hover {
+      -webkit-transform: scale(1.1, 1.1);
+      transform: scale(1.1, 1.1); }
+    body div.login-container div.login-form form div.input-group {
+      width: 90%;
+      margin: 0 auto; }
+      body div.login-container div.login-form form div.input-group input {
+        margin-bottom: 20px;
+        border-radius: 5px; }
+      body div.login-container div.login-form form div.input-group input.empty {
+        border: 1px solid red; }
+      body div.login-container div.login-form form div.input-group span {
+        display: inline-block;
+        position: relative;
+        color: white;
+        -webkit-transition: 800ms;
+        transition: 800ms; }
+      body div.login-container div.login-form form div.input-group span.top-error {
+        bottom: 1500px; }
+      body div.login-container div.login-form form div.input-group span.right-error {
+        bottom: 1500px; }
+      body div.login-container div.login-form form div.input-group span.empty {
+        display: block;
+        font-size: 1.5em;
+        color: red;
+        bottom: 0; }

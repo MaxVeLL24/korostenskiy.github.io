@@ -144,23 +144,24 @@ var_dump($_POST);
 
 
                 if (isset($_POST['nakladna']) && isset($_POST['car_number'])) {
-                    $operation = $db->operation("INSERT INTO `railwayAccounting`(`operator_id`, `railways_count`, `operation_time`) VALUES ('{$_POST['railways_operator_id']}','{$_POST['rlwCount']}',CURRENT_TIMESTAMP)");
 
-                    $balanceCheck = $db->find("SELECT `month_railway_count` FROM `railways_balance` WHERE `operator_id`='{$_POST['railways_operator_id']}'")->fetch_assoc();
-                    $balanceChange = $balanceCheck['month_railway_count'] + $_POST['rlwCount'];
-                    $balanceUpdate = $db->operation("UPDATE `railways_balance` SET `month_railway_count`='$balanceChange',`LastUpdateTime`=CURRENT_TIMESTAMP WHERE `operator_id`='{$_POST['railways_operator_id']}'");
-
-                    if (!$balanceUpdate === false) {
-                        require_once 'operations/operation_success.php';
-                        echo "<script>
-    setTimeout('location.replace(\"shub.php\")', 7000);
-</script>";
-                    } else if ($balanceUpdate === false) {
-                        require_once 'operations/operation_error.php';
-                        echo "<script>
-    setTimeout('location.replace(\"shub.php\")', 7000);
-</script>";
-                    }
+//                    $operation = $db->operation("INSERT INTO `railwayAccounting`(`operator_id`, `railways_count`, `operation_time`) VALUES ('{$_POST['railways_operator_id']}','{$_POST['rlwCount']}',CURRENT_TIMESTAMP)");
+//
+//                    $balanceCheck = $db->find("SELECT `month_railway_count` FROM `railways_balance` WHERE `operator_id`='{$_POST['railways_operator_id']}'")->fetch_assoc();
+//                    $balanceChange = $balanceCheck['month_railway_count'] + $_POST['rlwCount'];
+//                    $balanceUpdate = $db->operation("UPDATE `railways_balance` SET `month_railway_count`='$balanceChange',`LastUpdateTime`=CURRENT_TIMESTAMP WHERE `operator_id`='{$_POST['railways_operator_id']}'");
+//
+//                    if (!$balanceUpdate === false) {
+//                        require_once 'operations/operation_success.php';
+//                        echo "<script>
+//    setTimeout('location.replace(\"shub.php\")', 7000);
+//</script>";
+//                    } else if ($balanceUpdate === false) {
+//                        require_once 'operations/operation_error.php';
+//                        echo "<script>
+//    setTimeout('location.replace(\"shub.php\")', 7000);
+//</script>";
+//                    }
                 }
 
                 if (isset($_POST['chose'])) {
