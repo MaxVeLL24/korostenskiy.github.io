@@ -1,3 +1,5 @@
+<?php
+?>
 <div class="balance-menu">
     <ul>
         <span>Оберіть баланс потірбної категорії:</span>
@@ -18,9 +20,9 @@
             </div>
             <div class='modal-body'>
                 <ul class="check">
-                    <li class="month-check"><a>За місяць</a></li>
-                    <li class="week-check"><a>За тиждень</a></li>
-                    <li class="day-check"><a>За день</a></li>
+                    <li class="month-check"><a class="time" data-time="month">За місяць</a></li>
+                    <li class="week-check"><a class="time" data-time="week">За тиждень</a></li>
+                    <li class="day-check"><a class="time" data-time="day">За день</a></li>
                 </ul>
                 <table class='modal-table' id="ajax-input">
                 </table>

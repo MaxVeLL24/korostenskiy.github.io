@@ -125,3 +125,9 @@ if (!empty($_POST['pmmID'])) {
                     </tr>";
     }
 }
+if (!empty($_POST['pmm']) && !empty($_POST['pmmtime'])) {
+    $time= strtotime("+1 day");
+    $TimeCorrection= date('Y-m-d G:i:s',$time);
+//    $detailInit = verification::pmmWITHtime($_POST['pmmID'],$_POST['pmmtime']);
+    echo $TimeCorrection;
+}

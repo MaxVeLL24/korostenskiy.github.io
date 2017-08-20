@@ -20,4 +20,9 @@ class verification
         $db = new DB();
         return $db->login("SELECT * FROM `pmmAccounting` WHERE `pmm_id`='$pmmID' ORDER BY `operationTime` DESC")->fetch_all();
     }
+    static public function pmmWITHtime($pmmID,$time)
+    {
+        $db = new DB();
+        return $db->login("SELECT * FROM `pmmAccounting` WHERE `pmm_id`='$pmmID' ORDER BY `operationTime` DESC")->fetch_all();
+    }
 }

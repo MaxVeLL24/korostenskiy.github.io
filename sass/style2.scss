@@ -16,11 +16,24 @@ body {
     -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
   }
-  @keyframes spin {
+  
+  @-webkit-keyframes spin {
     0% {
+      -webkit-transform: rotate(0deg);
       transform: rotate(0deg);
     }
     100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
       transform: rotate(360deg);
     }
   }
@@ -35,7 +48,7 @@ body {
     font-family: 'Jura', sans-serif;
     width: 420px;
     margin: 0 auto;
-    padding-top: 100px;
+    padding-top: 5%;
     padding-bottom: 15px;
     @media only screen and (max-device-width: 480px) {
       width: 320px;
@@ -60,9 +73,10 @@ body {
           border: 1px solid transparent;
           border-radius: 5px;
           margin: 0 auto;
-          background-color: rgba(19, 220, 82, 0.5);
+          background-color: rgba(19, 220, 82, 0.855);
         }
         a:hover {
+          -webkit-transform: scale(1.1, 1.1);
           transform: scale(1.1, 1.1);
         }
         div.input-group {
@@ -79,6 +93,7 @@ body {
             display: inline-block;
             position: relative;
             color: white;
+            -webkit-transition: 800ms;
             transition: 800ms;
           }
           span.top-error {

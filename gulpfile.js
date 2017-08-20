@@ -3,17 +3,18 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
-const cleanCSS = require('clean-css');
 const pump = require('pump');
 
-gulp.task('minify-css', function() {
+var concatCss = require('gulp-concat-css');
+
+gulp.task('concatCss', function () {
     return gulp.src('css/*.css')
+        .pipe(concatCss("main.css"))
         .pipe(gulp.dest('css/'));
 });
-
 gulp.task('uglify', function (cb) {
     pump([
-            gulp.src('js/global.js'),
+            gulp.src('js/*.js'),
             uglify(),
             gulp.dest('js/')
         ],
@@ -21,27 +22,34 @@ gulp.task('uglify', function (cb) {
     );
 });
 
-gulp.task('concat', function() {
-    return gulp.src('js/*.js')
-        .pipe(concat('global.js'))
-        .pipe(gulp.dest('js'));
-});
+// gulp.task('concat', function() {
+//     return gulp.src('js/*.js')
+//         .pipe(concat('global.js'))
+//         .pipe(gulp.dest('js'));
+// });
 
-gulp.task('sass', function() {
-    return gulp.src('sass/*.scss')
+gulp.task('sass', function () {
+    return gulp.src('sass/style.scss')
         .pipe(sass())
         .pipe(gulp.dest('css/'))
 });
 
-gulp.task('watch', function(){
+gulp.task('watch', function () {
     gulp.watch('sass/*.scss', ['sass']);
 });
 
-gulp.task('default', function() {
-    gulp.src('css/*.css')
+gulp.task('autoprefixer', function () {
+    gulp.src('sass/*.scss')
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('css/'))
+        .pipe(gulp.dest('sass/'))
+});
+
+gulp.task('default', function () {
+    gulp.start('sass', 'uglify', 'autoprefixer');
+    gulp.watch(['js/global.js'], ['uglify']);
+    gulp.watch(['sass/*.scss'], ['sass']);
+    gulp.watch(['css/style.css'], ['autoprefixer']);
 });

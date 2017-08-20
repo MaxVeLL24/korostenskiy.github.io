@@ -1,54 +1,64 @@
 $(document).ready(function () {
-    $('a[name=ajax-details]').click(function (e) {
-        var detID = $(this).attr('data-id');
-        var input = $('#ajax-input');
-        input.children().remove();
-        $.ajax({
+    $("a[name=ajax-details]").click(function (a) {
+        var n = $(this).attr("data-id");
+        $("#ajax-input").children().remove(), $.ajax({
             url: "verajax.php",
             type: "post",
-            data: {
-                'detID': detID
-            },
-            success: function (response) {
-                if (response) {
-                    var input = $('#ajax-input');
-                    input.append(response);
-                }
-                else {
-                    var input = $('#ajax-input');
-                    var otboy = '<h2>Операцій ще не здійснювалось</h2>';
-                    input.append(otboy);
+            data: {detID: n},
+            success: function (a) {
+                if (a) (n = $("#ajax-input")).append(a); else {
+                    var n = $("#ajax-input");
+                    n.append("<h2>Операцій ще не здійснювалось</h2>")
                 }
             },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
+            error: function (a, n, e) {
+                console.log(n, e)
             }
-        });
+        })
+    }), $("a[name=ajax-pmm]").click(function (a) {
+        var n = $(this).attr("data-id");
+        var test = $(this).attr("data-id");
+        $("#ajax-input").children().remove(),
+            $.ajax({
+                url: "verajax.php",
+                type: "post",
+                data: {pmmID: n},
+                success: function (a) {
+                    if (a) {
+                        (n = $("#ajax-input")).append(a);
+                        $('ul.check li a').attr('pmm', test)
+                    }
+                    else {
+                        var n = $("#ajax-input");
+                        n.append("<h2>Операцій ще не здійснювалось</h2>")
+                    }
+                },
+                error: function (a, n, e) {
+                    console.log(n, e)
+                }
+            })
     });
-    $('a[name=ajax-pmm]').click(function (e) {
-        var pmmID = $(this).attr('data-id');
-        var input = $('#ajax-input');
-        input.children().remove();
+    $("a.time").click(function (e) {
+        var pmmid = $(this).attr("pmm");
+        var pmmtime = $(this).attr("data-time");
         $.ajax({
             url: "verajax.php",
             type: "post",
             data: {
-                'pmmID': pmmID
+                pmm: pmmid,
+                pmmtime: pmmtime
             },
-            success: function (response) {
-                if (response) {
-                    var input = $('#ajax-input');
-                    input.append(response);
+            success: function (a) {
+                if (a) {
+                    console.log(a);
                 }
                 else {
-                    var input = $('#ajax-input');
-                    var otboy = '<h2>Операцій ще не здійснювалось</h2>';
-                    input.append(otboy);
+
                 }
             },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
+            error: function (a, n, e) {
+                console.log(n, e)
             }
-        });
+        })
     });
 });
