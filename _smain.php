@@ -1,6 +1,5 @@
 <?php
 require_once 'autoloader.php';
-var_dump($_POST);
 ?>
 <!doctype html>
 <html lang="en">

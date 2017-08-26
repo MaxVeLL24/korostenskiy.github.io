@@ -87,6 +87,62 @@ if (!empty($_POST['detID'])) {
                     </tr>";
     }
 }
+if (!empty($_POST['localtrd'])) {
+    $localtrdInit = verification::DETPROD($_POST['localtrd']);
+    if (!empty($localtrdInit)) {
+        $kreditDetails = 0;
+        $debitDetails = 0;
+        echo "<tr>
+                        <th>Операція</th>
+                        <th>Кількість</th>
+                        <th>Отримувач</th>
+                        <th>Видав</th>
+                        <th>Дата</th>
+                    </tr>";
+        foreach ($localtrdInit as $value) {
+            if ($value[2] == 'Отримання') {
+                $debitDetails += $value[3];
+            } elseif ($value[2] == 'Видача') {
+                $kreditDetails += $value[3];
+            }
+            echo "
+                    <tr>
+                        <td> " . $value[2] . "</td>
+                        <td> " . $value[3] . "</td>
+                        <td> " . $value[4] . "</td>
+                        <td> " . $value[5] . "</td>
+                        <td> " . $value[6] . "</td>
+                    </tr>";
+        }
+        $resultD = 0;
+        $resultD = $debitDetails - $kreditDetails;
+        echo "<tr>
+                        <td>Сума</td>
+                        <td>" . $resultD . "</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>";
+    }
+}
+if (!empty($_POST['railwayID'])) {
+    $railInit = verification::RAILWAYPROD($_POST['railwayID']);
+    if (!empty($railInit)) {
+        $kreditDetails = 0;
+        $debitDetails = 0;
+        echo "<tr>
+                        <th>Кількість</th>
+                        <th>Час</th>
+                    </tr>";
+        foreach ($railInit as $value) {
+            echo "
+                    <tr>
+                        <td> " . $value[2] . "</td>
+                        <td> " . $value[3] . "</td>
+                    </tr>";
+        }
+    }
+}
 if (!empty($_POST['pmmID'])) {
     $detailInit = verification::PMMPROD($_POST['pmmID']);
     if (!empty($detailInit)) {
@@ -125,9 +181,121 @@ if (!empty($_POST['pmmID'])) {
                     </tr>";
     }
 }
-if (!empty($_POST['pmm']) && !empty($_POST['pmmtime'])) {
-    $time= strtotime("+1 day");
-    $TimeCorrection= date('Y-m-d G:i:s',$time);
-//    $detailInit = verification::pmmWITHtime($_POST['pmmID'],$_POST['pmmtime']);
-    echo $TimeCorrection;
+if (!empty($_POST['pmm']) && !empty($_POST['time'])) {
+    if ($_POST['time'] == 'month') {
+        $time = strtotime("-1 month");
+    } else if ($_POST['time'] == 'week') {
+        $time = strtotime("-1 week");
+    } else if ($_POST['time'] == 'day') {
+        $time = strtotime("-1 day");
+    }
+    $TimeCorrection = date('Y-m-d G:i:s', $time);
+    $pmmInit = verification::pmmWITHtime($_POST['pmm'], $TimeCorrection);
+    if (!empty($pmmInit)) {
+        $kreditDetails = 0;
+        $debitDetails = 0;
+        echo "<tr>
+                        <th>Операція</th>
+                        <th>Кількість</th>
+                        <th>Отримувач</th>
+                        <th>Видав</th>
+                        <th>Дата</th>
+                    </tr>";
+        foreach ($pmmInit as $value) {
+            if ($value[2] == 'Отримання') {
+                $debitDetails += $value[3];
+            } elseif ($value[2] == 'Видача') {
+                $kreditDetails += $value[3];
+            }
+            echo "
+                    <tr>
+                        <td> " . $value[2] . "</td>
+                        <td> " . $value[3] . "</td>
+                        <td> " . $value[4] . "</td>
+                        <td> " . $value[5] . "</td>
+                        <td> " . $value[6] . "</td>
+                    </tr>";
+        }
+        $resultD = 0;
+        $resultD = $debitDetails - $kreditDetails;
+        echo "<tr>
+                        <td>Сума</td>
+                        <td>" . $resultD . "</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>";
+    }
+}
+if (!empty($_POST['detail']) && !empty($_POST['time'])) {
+    if ($_POST['time'] == 'month') {
+        $time = strtotime("-1 month");
+    } else if ($_POST['time'] == 'week') {
+        $time = strtotime("-1 week");
+    } else if ($_POST['time'] == 'day') {
+        $time = strtotime("-1 day");
+    }
+    $TimeCorrection = date('Y-m-d G:i:s', $time);
+    $detailInit = verification::detailsWITHtime($_POST['detail'], $TimeCorrection);
+    if (!empty($detailInit)) {
+        $kreditDetails = 0;
+        $debitDetails = 0;
+        echo "<tr>
+                        <th>Операція</th>
+                        <th>Кількість</th>
+                        <th>Отримувач</th>
+                        <th>Видав</th>
+                        <th>Дата</th>
+                    </tr>";
+        foreach ($detailInit as $value) {
+            if ($value[2] == 'Отримання') {
+                $debitDetails += $value[3];
+            } elseif ($value[2] == 'Видача') {
+                $kreditDetails += $value[3];
+            }
+            echo "
+                    <tr>
+                        <td> " . $value[2] . "</td>
+                        <td> " . $value[3] . "</td>
+                        <td> " . $value[4] . "</td>
+                        <td> " . $value[5] . "</td>
+                        <td> " . $value[6] . "</td>
+                    </tr>";
+        }
+        $resultD = 0;
+        $resultD = $debitDetails - $kreditDetails;
+        echo "<tr>
+                        <td>Сума</td>
+                        <td>" . $resultD . "</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>";
+    }
+}
+if (!empty($_POST['railway']) && !empty($_POST['time'])) {
+    if ($_POST['time'] == 'month') {
+        $time = strtotime("-1 month");
+    } else if ($_POST['time'] == 'week') {
+        $time = strtotime("-1 week");
+    } else if ($_POST['time'] == 'day') {
+        $time = strtotime("-1 day");
+    }
+    $TimeCorrection = date('Y-m-d G:i:s', $time);
+    $railInit = verification::railwaysWITHtime($_POST['railway'], $TimeCorrection);
+    if (!empty($railInit)) {
+        $kreditDetails = 0;
+        $debitDetails = 0;
+        echo "<tr>
+                        <th>Кількість</th>
+                        <th>Час</th>
+                    </tr>";
+        foreach ($railInit as $value) {
+            echo "
+                    <tr>
+                        <td> " . $value[2] . "</td>
+                        <td> " . $value[3] . "</td>
+                    </tr>";
+        }
+    }
 }

@@ -16,7 +16,7 @@ gulp.task('uglify', function (cb) {
     pump([
             gulp.src('js/*.js'),
             uglify(),
-            gulp.dest('js/')
+            gulp.dest('js/uglify/')
         ],
         cb
     );
@@ -41,7 +41,7 @@ gulp.task('watch', function () {
 gulp.task('autoprefixer', function () {
     gulp.src('sass/*.scss')
         .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+            browsers: ['last 5 versions'],
             cascade: false
         }))
         .pipe(gulp.dest('sass/'))

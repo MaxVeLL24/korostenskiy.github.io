@@ -6,7 +6,7 @@
                 date_default_timezone_set('Europe/Kiev');
                 echo date("F j, Y, G:i:s ");
                 ?>
-                <br>v. 1.0</span>
+                <br>v. 1.7</span>
         </div>
         <div class="col-md-9">
             <span class="text"> Designed and Developed by M.Pawlenko</span>

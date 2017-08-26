@@ -74,9 +74,13 @@ body {
           border-radius: 5px;
           margin: 0 auto;
           background-color: rgba(19, 220, 82, 0.855);
+          &:hover{
+            background-color: rgba(15, 133, 54, 0.85);
+          }
         }
         a:hover {
           -webkit-transform: scale(1.1, 1.1);
+          -ms-transform: scale(1.1, 1.1);
           transform: scale(1.1, 1.1);
         }
         div.input-group {
@@ -94,6 +98,7 @@ body {
             position: relative;
             color: white;
             -webkit-transition: 800ms;
+            -o-transition: 800ms;
             transition: 800ms;
           }
           span.top-error {

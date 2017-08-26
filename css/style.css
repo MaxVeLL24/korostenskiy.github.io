@@ -43,7 +43,11 @@ table {
 
 * {
   -webkit-transition: 300ms;
+  -o-transition: 300ms;
   transition: 300ms; }
+  @media screen and (max-width: 600px) {
+    * {
+      cursor: pointer; } }
   * body {
     margin: 0 auto; }
     * body div.main {
@@ -77,12 +81,14 @@ table {
             list-style-type: none;
             display: block;
             -ms-flex-pack: distribute;
+            -webkit-justify-content: space-around;
             justify-content: space-around;
             background-color: rgba(234, 234, 234, 0.2); }
             @media screen and (min-width: 480px) {
               * body div.main div.sub-main nav ul {
                 display: -webkit-box;
                 display: -ms-flexbox;
+                display: -webkit-flex;
                 display: flex; } }
             * body div.main div.sub-main nav ul li {
               text-decoration: none;
@@ -98,6 +104,7 @@ table {
               * body div.main div.sub-main nav ul li a:hover {
                 background-color: rgba(19, 220, 82, 0.5);
                 -webkit-transform: scale(1.01, 1.01);
+                -ms-transform: scale(1.01, 1.01);
                 transform: scale(1.01, 1.01); }
               * body div.main div.sub-main nav ul li button {
                 text-decoration: none;
@@ -115,6 +122,7 @@ table {
               * body div.main div.sub-main nav ul li button:hover {
                 background-color: rgba(19, 220, 82, 0.5);
                 -webkit-transform: scale(1.02, 1.03);
+                -ms-transform: scale(1.02, 1.03);
                 transform: scale(1.02, 1.03); }
           * body div.main div.sub-main nav ul.slider-toggle {
             margin-bottom: 0;
@@ -139,19 +147,22 @@ table {
             color: white;
             opacity: 0.9; }
           * body div.main div.sub-main div.modal-dialog div.modal-content .modal-header h4.modal-title {
+            font-size: 1.5em;
             color: white;
             text-align: center; }
           * body div.main div.sub-main div.modal-dialog div.modal-content .modal-body ul.check {
+            background: transparent;
             list-style-type: none;
             display: block;
             -ms-flex-pack: distribute;
+            -webkit-justify-content: space-around;
             justify-content: space-around;
-            background-color: rgba(234, 234, 234, 0.2);
             margin-bottom: 10px; }
             @media screen and (min-width: 480px) {
               * body div.main div.sub-main div.modal-dialog div.modal-content .modal-body ul.check {
                 display: -webkit-box;
                 display: -ms-flexbox;
+                display: -webkit-flex;
                 display: flex; } }
             * body div.main div.sub-main div.modal-dialog div.modal-content .modal-body ul.check li {
               text-decoration: none;
@@ -166,10 +177,14 @@ table {
                 color: white;
                 text-align: center;
                 cursor: pointer;
-                font-size: 1.5em; }
+                font-size: 1.5em;
+                border-radius: 10px; }
+                * body div.main div.sub-main div.modal-dialog div.modal-content .modal-body ul.check li a.time-active {
+                  background-color: rgba(19, 220, 82, 0.7); }
               * body div.main div.sub-main div.modal-dialog div.modal-content .modal-body ul.check li a:hover {
                 background-color: rgba(19, 220, 82, 0.5);
                 -webkit-transform: scale(1.01, 1.01);
+                -ms-transform: scale(1.01, 1.01);
                 transform: scale(1.01, 1.01); }
           * body div.main div.sub-main div.modal-dialog div.modal-content input::-webkit-input-placeholder {
             color: black; }
@@ -181,11 +196,14 @@ table {
           text-align: center;
           color: white;
           font-size: 3em;
+          background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, rgba(254, 254, 254, 0.1) 100%);
+          background: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, rgba(254, 254, 254, 0.1) 100%);
           background: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, rgba(254, 254, 254, 0.1) 100%);
           padding-bottom: 20px; }
           * body div.main div.sub-main .logo span.logo-text {
             font-family: 'Jura', sans-serif;
             -webkit-transition: 1000ms;
+            -o-transition: 1000ms;
             transition: 1000ms; }
             @media screen and (max-width: 400px) {
               * body div.main div.sub-main .logo span.logo-text {
@@ -208,6 +226,8 @@ table {
         * body div.main div.sub-main footer {
           padding-top: 25px; }
           * body div.main div.sub-main footer div.footer-container {
+            background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, rgba(254, 254, 254, 0.1) 100%);
+            background: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, rgba(254, 254, 254, 0.1) 100%);
             background: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, rgba(254, 254, 254, 0.1) 100%);
             text-align: right;
             width: 100%; }
@@ -292,6 +312,8 @@ table {
             width: 60%; }
             * body div.main div.sub-main div.operation form ul li a:hover {
               background-color: rgba(220, 23, 23, 0.5); }
+      * body div.main div.background {
+        margin-top: 10px; }
 
 body div#loader {
   position: absolute;
@@ -356,8 +378,11 @@ body div.login-container {
       border-radius: 5px;
       margin: 0 auto;
       background-color: rgba(19, 220, 82, 0.855); }
+      body div.login-container div.login-form form a:hover {
+        background-color: rgba(15, 133, 54, 0.85); }
     body div.login-container div.login-form form a:hover {
       -webkit-transform: scale(1.1, 1.1);
+      -ms-transform: scale(1.1, 1.1);
       transform: scale(1.1, 1.1); }
     body div.login-container div.login-form form div.input-group {
       width: 90%;
@@ -372,6 +397,7 @@ body div.login-container {
         position: relative;
         color: white;
         -webkit-transition: 800ms;
+        -o-transition: 800ms;
         transition: 800ms; }
       body div.login-container div.login-form form div.input-group span.top-error {
         bottom: 1500px; }
