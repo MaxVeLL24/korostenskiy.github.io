@@ -17,7 +17,7 @@
             background-size: cover;
         }
     </style>
-    <script src="js/loader.js"></script>
+    <script src="js/uglify/loader.js"></script>
 </head>
 <body onload="myFunction()">
 <div id="loader"></div>
@@ -37,6 +37,6 @@
     </div>
 </div>
 
-<script src="js/script.js"></script>
+<script src="js/uglify/script.js"></script>
 </body>
 </html>

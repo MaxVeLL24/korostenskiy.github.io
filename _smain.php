@@ -25,7 +25,7 @@ require_once 'autoloader.php';
 <div class="main col-md-12">
     <div class="sub-main">
         <?php
-        if ($_COOKIE['ExpT']=='dpbvm') {
+        if ($_COOKIE['ExpT'] == 'dpbvm') {
             echo "<script>
     setTimeout('location.replace(\"dhub.php\")', 0);
 </script>";
@@ -186,7 +186,7 @@ require_once 'autoloader.php';
 </div>
 
 
-<script src="js/script.js"></script>
-<script src="js/ajax_balance.js"></script>
+<script src="js/uglify/script.js"></script>
+<script src="js/uglify/ajax_balance.js"></script>
 </body>
 </html>

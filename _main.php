@@ -131,7 +131,7 @@ require_once 'autoloader.php';
                         require_once 'operations/balance.php';
                     }
                     if ($_POST['chose'] == 'localtrade') {
-                        echo 'sdsa';
+                        require_once 'operations/local_trade.php';
                     }
                     if ($_POST['chose'] == 'railways') {
                         require_once 'operations/railway.php';
@@ -150,7 +150,7 @@ require_once 'autoloader.php';
 </div>
 
 
-<script src="js/script.js"></script>
-<script src="js/ajax_balance.js"></script>
+<script src="js/uglify/script.js"></script>
+<script src="js/uglify/ajax_balance.js"></script>
 </body>
 </html>

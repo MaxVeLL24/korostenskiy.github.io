@@ -117,6 +117,12 @@ table {
                 width: 100%;
                 border: 1px transparent solid;
                 background-color: rgba(94, 94, 94, 0.5); }
+                @media only screen and (max-device-width: 1071px) {
+                  * body div.main div.sub-main nav ul li button[value='localtrade'] {
+                    padding: 2px 16px; } }
+                @media only screen and (max-device-width: 669px) {
+                  * body div.main div.sub-main nav ul li button[value='localtrade'] {
+                    padding: 14px 16px; } }
               * body div.main div.sub-main nav ul li button:focus {
                 outline: 0; }
               * body div.main div.sub-main nav ul li button:hover {
@@ -127,7 +133,12 @@ table {
           * body div.main div.sub-main nav ul.slider-toggle {
             margin-bottom: 0;
             -webkit-box-shadow: 0px 0px 13px -1px #030303;
-            box-shadow: 0px 0px 13px -1px #030303; }
+            box-shadow: 0px 0px 13px -1px #030303;
+            display: none; }
+            * body div.main div.sub-main nav ul.slider-toggle.show {
+              display: block; }
+          * body div.main div.sub-main nav ul.slide-element.hidden-menu {
+            display: none; }
         @media only screen and (max-device-width: 667px) {
           * body div.main div.sub-main div.modal-dialog {
             width: 90%; } }

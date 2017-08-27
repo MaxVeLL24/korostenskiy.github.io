@@ -5,13 +5,6 @@ const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const pump = require('pump');
 
-var concatCss = require('gulp-concat-css');
-
-gulp.task('concatCss', function () {
-    return gulp.src('css/*.css')
-        .pipe(concatCss("main.css"))
-        .pipe(gulp.dest('css/'));
-});
 gulp.task('uglify', function (cb) {
     pump([
             gulp.src('js/*.js'),
@@ -34,22 +27,18 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('css/'))
 });
 
-gulp.task('watch', function () {
-    gulp.watch('sass/*.scss', ['sass']);
-});
-
 gulp.task('autoprefixer', function () {
-    gulp.src('sass/*.scss')
+    gulp.src('style/*.css')
         .pipe(autoprefixer({
             browsers: ['last 5 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('sass/'))
+        .pipe(gulp.dest('css/'))
 });
 
 gulp.task('default', function () {
     gulp.start('sass', 'uglify', 'autoprefixer');
-    gulp.watch(['js/global.js'], ['uglify']);
+    gulp.watch(['js/*.js'], ['uglify']);
     gulp.watch(['sass/*.scss'], ['sass']);
     gulp.watch(['css/style.css'], ['autoprefixer']);
 });
